@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>경제 놀이터</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+.header {
+    background: linear-gradient(135deg, #315bea, #7048e8);
+    color: white;
+    padding: 28px 22px;
+    border-radius: 0 0 28px 28px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.subtitle {
+    margin-top: 8px;
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 18px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 5px 18px rgba(30, 50, 90, 0.08);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.briefing {
+    background: linear-gradient(135deg, #eef3ff, #f5f0ff);
+}
+
+.keyword {
+    display: inline-block;
+    background: white;
+    color: #315bea;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin: 4px 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.quiz {
+    background: #fff8e8;
+}
+
+.question {
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 14px;
+    background: #315bea;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #2448c9;
+}
+
+.status {
+    display: flex;
+    gap: 10px;
+}
+
+.status-box {
+    flex: 1;
+    background: #f4f6fa;
+    padding: 16px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.number {
+    font-size: 22px;
+    font-weight: bold;
+    color: #315bea;
+    margin-top: 5px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.menu-item {
+    background: white;
+    padding: 18px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(30, 50, 90, 0.06);
+}
+
+.icon {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.small {
+    color: #6d7485;
+    font-size: 13px;
+}
+
+.footer {
+    text-align: center;
+    color: #8b92a3;
+    font-size: 12px;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">🌍 경제 놀이터</div>
+    <div class="subtitle">
+        어렵게 느껴지는 경제를 쉽고 재미있게
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="card briefing">
+        <div class="card-title">🌅 오늘의 경제 브리핑</div>
+
+        <p>
+            오늘 경제에서 주목해야 할 핵심 흐름을
+            한눈에 확인해보세요.
+        </p>
+
+        <div>
+            <span class="keyword">📈 금리</span>
+            <span class="keyword">💵 환율</span>
+            <span class="keyword">🛢️ 유가</span>
+            <span class="keyword">🌎 세계경제</span>
+        </div>
+
+        <p class="small">
+            ※ 현재는 시제품입니다. 실제 AI 경제분석 기능은
+            추후 연결할 예정입니다.
+        </p>
+    </section>
+
+    <section class="card">
+        <div class="card-title">🎯 오늘의 경제 흐름</div>
+
+        <p>
+            경제를 이해하기 위해서는 하나의 사건만 보는 것보다
+            여러 경제요소가 서로 어떻게 연결되는지 보는 것이 중요합니다.
+        </p>
+
+        <p>
+            <strong>금리 → 소비 → 기업 → 고용 → 주식시장</strong>
+        </p>
+    </section>
+
+    <section class="card quiz">
+        <div class="card-title">🎮 오늘의 경제 퀴즈</div>
+
+        <p class="question">
+            Q. 일반적으로 기준금리가 올라가면
+            대출을 받은 사람의 부담은 어떻게 될까요?
+        </p>
+
+        <button onclick="showAnswer()">
+            정답 확인하기
+        </button>
+
+        <p id="answer"></p>
+    </section>
+
+    <section class="card">
+        <div class="card-title">⭐ 나의 경제 활동</div>
+
+        <div class="status">
+
+            <div class="status-box">
+                🪙 포인트
+                <div class="number">120 P</div>
+            </div>
+
+            <div class="status-box">
+                ⭐ 레벨
+                <div class="number">Lv.1</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="menu">
+
+        <div class="menu-item">
+            <div class="icon">📚</div>
+            <strong>경제용어</strong>
+            <div class="small">쉽게 배우기</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="icon">💬</div>
+            <strong>커뮤니티</strong>
+            <div class="small">경제 이야기</div>
+        </div>
+
+ <div class="메뉴 항목">
+ <div class="icon">🏠</div>
+ <강함>내 집</strong>
+ <div class="small">나만의 공간</div>
+        </디브>
+
+ <div class="메뉴 항목">
+ <div class="icon">🏆</div>
+ <강함>경제 레벨</강함>
+ <div class="small">나의 성장</div>
+        </디브>
+
+    </부분>
+
+</주된>
+
+<div class="footer">
+ 경제 놀이터 · 함께 배우고 성장하는 경제 커뮤니티
+</div>
+
+<대본>
+
+함수 showAnswer() {
+
+ document.getElementById("답변").innerHTML =
+ "✅ 정답: 대출 부담이 커질 가능성이 높습니다!<br><br>" +
+ "🎉 퀴즈 시스템과 포인트 기능은 앞으로 발전시킬 예정입니다.";
+
+}
+
+</script>
+
+</body>
+</html>
