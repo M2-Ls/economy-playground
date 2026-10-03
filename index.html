@@ -1,49 +1,48 @@
-
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ko">
-<머리>
-<meta charset=>UTF-8">
-<meta 이름="viewport" 콘텐츠="width=장치 너비, 초기 스케일=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>경제 놀이터</title>
 
-<스타일.>
+<style>
 * {
- 박스 sizing: 테두리 박스;
+    box-sizing: border-box;
 }
 
-몸 {
- 여백: 0;
- 폰트 패밀리: 아리알, 산세리프;
- background: #f4f7fb;
- 색상: #172033;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
 }
 
 .header {
- 배경: 선형 gradient(135 deg, #315bea, #7048e8);
- 색상: 흰색;
- 패딩: 28 px 22 px;
- 국경 radius: 0 0 28 px 28 px;
+    background: linear-gradient(135deg, #315bea, #7048e8);
+    color: white;
+    padding: 28px 22px;
+    border-radius: 0 0 28px 28px;
 }
 
 .logo {
- 글꼴 크기: 26 px;
- 글꼴 무게: 굵게;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 .subtitle {
- 마진 탑: 8 px;
- 불투명도: 0.9;
- 글꼴 크기: 14 px;
+    margin-top: 8px;
+    opacity: 0.9;
+    font-size: 14px;
 }
 
 .container {
- 최대 너비: 700 px;
- 여백: 자동;
- 패딩: 18 px;
+    max-width: 700px;
+    margin: auto;
+    padding: 18px;
 }
 
-.카드 {
+.card {
     background: white;
     border-radius: 20px;
     padding: 20px;
@@ -205,91 +204,91 @@ button:focus-visible {
     </section>
 
     <section class="card">
- <div class="카드-title">🎯 오늘의 경제 흐름</div>
+        <div class="card-title">🎯 오늘의 경제 흐름</div>
 
         <p>
- 경제를 이해하기 위해서는 하나의 사건만 보는 것보다
- 여러 경제요소가 서로 어떻게 연결되는지 보는 것이 중요합니다.
+            경제를 이해하기 위해서는 하나의 사건만 보는 것보다
+            여러 경제요소가 서로 어떻게 연결되는지 보는 것이 중요합니다.
         </p>
 
         <p>
- <strong>금리 → 소비 → 기업 → 고용 → 주식시장</strong>
+            <strong>금리 → 소비 → 기업 → 고용 → 주식시장</strong>
         </p>
-    </부분>
+    </section>
 
- <섹션 클래스="카드 퀴즈">
- <div class="카드-title">🎮 오늘의 경제 퀴즈</div>
+    <section class="card quiz">
+        <div class="card-title">🎮 오늘의 경제 퀴즈</div>
 
- <p class="질문">
- Q. 일반적으로 기준금리가 올라가면
- 대출을 받은 사람의 부담은 어떻게 될까요?
+        <p class="question">
+            Q. 일반적으로 기준금리가 올라가면
+            대출을 받은 사람의 부담은 어떻게 될까요?
         </p>
 
- <버튼 입력="버튼" 클릭="showAnswer()">
- 정답 확인하기
-        </버튼>
+        <button type="button" onclick="showAnswer()">
+            정답 확인하기
+        </button>
 
- <p id= "답변" 아리아-라이브="polite"></p>
-    </부분>
+        <p id="answer" aria-live="polite"></p>
+    </section>
 
- <섹션 클래스="카드">
- <div class="카드-title">⭐ 나의 경제 활동</div>
+    <section class="card">
+        <div class="card-title">⭐ 나의 경제 활동</div>
 
- <div class="status">
- <div class="status-box">
- 🪙 포인트
- <div class="number">120 P</div>
-            </디브>
+        <div class="status">
+            <div class="status-box">
+                🪙 포인트
+                <div class="number">120 P</div>
+            </div>
 
- <div class="status-box">
- ⭐ 레벨
- <div class="number">Lv.1</div>
-            </디브>
-        </디브>
-    </부분>
+            <div class="status-box">
+                ⭐ 레벨
+                <div class="number">Lv.1</div>
+            </div>
+        </div>
+    </section>
 
- <섹션 클래스="메뉴">
+    <section class="menu">
 
- <div class="메뉴 항목">
- <div class="icon">📚</div>
- <강함>경제용어</강함>
- <div class="small">쉽게 배우기</div>
-        </디브>
+        <div class="menu-item">
+            <div class="icon">📚</div>
+            <strong>경제용어</strong>
+            <div class="small">쉽게 배우기</div>
+        </div>
 
- <div class="메뉴 항목">
- <div class="icon">💬</div>
- <강함>커뮤니티</강함>
- <div class="small">경제 이야기</div>
-        </디브>
+        <div class="menu-item">
+            <div class="icon">💬</div>
+            <strong>커뮤니티</strong>
+            <div class="small">경제 이야기</div>
+        </div>
 
- <디브 class="메뉴 항목">
- <div class="icon">🏠</div>
- <강함>내 집</강함>
- <div class="small">나만의 공간</div>
-        </디브>
+        <div class="menu-item">
+            <div class="icon">🏠</div>
+            <strong>내 집</strong>
+            <div class="small">나만의 공간</div>
+        </div>
 
- <div class="메뉴 항목">
- <div class="icon">🏆</div>
- <강함>경제 레벨</강함>
- <div class="small">나의 성장</div>
-        </디브>
+        <div class="menu-item">
+            <div class="icon">🏆</div>
+            <strong>경제 레벨</strong>
+            <div class="small">나의 성장</div>
+        </div>
 
-    </부분>
+    </section>
 
-</주된>
+</main>
 
 <footer class="footer">
- 경제 놀이터 · 함께 배우고 성장하는 경제 커뮤니티
-</발밑의>
+    경제 놀이터 · 함께 배우고 성장하는 경제 커뮤니티
+</footer>
 
-<대본>
-함수 showAnswer() {
- document.getElementById("답변").innerHTML =
- "✅ 정답: 대출 부담이 커질 가능성이 높습니다!<br><br>" +
- "🎉 일반적으로 금리가 오르면 변동금리 대출의 이자 부담이 커질 수 있습니다. " +
- "다만 실제 영향은 대출 조건에 따라 다릅니다.";
+<script>
+function showAnswer() {
+    document.getElementById("answer").innerHTML =
+        "✅ 정답: 대출 부담이 커질 가능성이 높습니다!<br><br>" +
+        "🎉 일반적으로 금리가 오르면 변동금리 대출의 이자 부담이 커질 수 있습니다. " +
+        "다만 실제 영향은 대출 조건에 따라 다릅니다.";
 }
-</대본>
+</script>
 
-</몸>
+</body>
 </html>
