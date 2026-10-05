@@ -102,6 +102,11 @@ button:focus-visible {
     outline-offset: 3px;
 }
 
+button:disabled {
+    background: #9aa3b8;
+    cursor: default;
+}
+
 .status {
     display: flex;
     gap: 10px;
@@ -224,7 +229,7 @@ button:focus-visible {
             대출을 받은 사람의 부담은 어떻게 될까요?
         </p>
 
-        <button type="button" onclick="showAnswer()">
+        <button type="button" id="quizButton" onclick="showAnswer()">
             정답 확인하기
         </button>
 
@@ -237,12 +242,12 @@ button:focus-visible {
         <div class="status">
             <div class="status-box">
                 🪙 포인트
-                <div class="number">120 P</div>
+                <div class="number" id="points">120 P</div>
             </div>
 
             <div class="status-box">
                 ⭐ 레벨
-                <div class="number">Lv.1</div>
+                <div class="number" id="level">Lv.1</div>
             </div>
         </div>
     </section>
@@ -282,12 +287,82 @@ button:focus-visible {
 </footer>
 
 <script>
-function showAnswer() {
-    document.getElementById("answer").innerHTML =
-        "✅ 정답: 대출 부담이 커질 가능성이 높습니다!<br><br>" +
-        "🎉 일반적으로 금리가 오르면 변동금리 대출의 이자 부담이 커질 수 있습니다. " +
-        "다만 실제 영향은 대출 조건에 따라 다릅니다.";
+
+let points = Number(localStorage.getItem("economyPoints"));
+
+if (!points) {
+    points = 120;
 }
+
+let quizCompleted = localStorage.getItem("todayQuizCompleted");
+
+function getLevel(points) {
+
+    if (points >= 700) {
+        return 4;
+    }
+
+    if (points >= 400) {
+        return 3;
+    }
+
+    if (points >= 200) {
+        return 2;
+    }
+
+    return 1;
+}
+
+function updateStatus() {
+
+    document.getElementById("points").textContent =
+        points + " P";
+
+    document.getElementById("level").textContent =
+        "Lv." + getLevel(points);
+}
+
+function showAnswer() {
+
+    const answer = document.getElementById("answer");
+    const button = document.getElementById("quizButton");
+
+    answer.innerHTML =
+        "✅ 정답: 대출 부담이 커질 가능성이 높습니다!<br><br>" +
+        "🎉 일반적으로 금리가 오르면 변동금리 대출의 " +
+        "이자 부담이 커질 수 있습니다. " +
+        "다만 실제 영향은 대출 조건에 따라 다릅니다.";
+
+    if (quizCompleted === "yes") {
+
+        answer.innerHTML +=
+            "<br><br>⭐ 오늘의 퀴즈 포인트는 이미 받았습니다.";
+
+        button.disabled = true;
+        button.textContent = "오늘의 보상 완료";
+
+        return;
+    }
+
+    points += 10;
+
+    localStorage.setItem("economyPoints", points);
+
+    localStorage.setItem("todayQuizCompleted", "yes");
+
+    quizCompleted = "yes";
+
+    updateStatus();
+
+    answer.innerHTML +=
+        "<br><br>🎁 퀴즈 보상 +10P를 받았습니다!";
+
+    button.disabled = true;
+    button.textContent = "보상 받기 완료";
+}
+
+updateStatus();
+
 </script>
 
 </body>
