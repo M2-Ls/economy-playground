@@ -80,6 +80,24 @@ body {
     line-height: 1.6;
 }
 
+.term {
+    background: #eefaf4;
+}
+
+.term-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #16834b;
+    margin-bottom: 12px;
+}
+
+.term-box {
+    background: white;
+    padding: 16px;
+    border-radius: 15px;
+    line-height: 1.7;
+}
+
 button {
     width: 100%;
     border: none;
@@ -105,6 +123,14 @@ button:focus-visible {
 button:disabled {
     background: #9aa3b8;
     cursor: default;
+}
+
+.term button {
+    background: #16834b;
+}
+
+.term button:hover {
+    background: #10663a;
 }
 
 .status {
@@ -236,20 +262,65 @@ button:disabled {
         <p id="answer" aria-live="polite"></p>
     </section>
 
+    <!-- 경제용어 학습 -->
+    <section class="card term">
+
+        <div class="card-title">📚 오늘의 경제용어</div>
+
+        <div class="term-name">
+            기준금리
+        </div>
+
+        <div class="term-box">
+
+            <strong>쉽게 말하면?</strong>
+
+            <p>
+                중앙은행이 금융기관과 거래할 때 기준이 되는 금리입니다.
+            </p>
+
+            <strong>왜 중요할까요?</strong>
+
+            <p>
+                기준금리가 변하면 대출금리와 예금금리,
+                소비와 투자 등 경제 전반에 영향을 줄 수 있습니다.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            id="termButton"
+            onclick="completeTerm()">
+            학습 완료 +10P
+        </button>
+
+        <p id="termMessage" aria-live="polite"></p>
+
+    </section>
+
     <section class="card">
+
         <div class="card-title">⭐ 나의 경제 활동</div>
 
         <div class="status">
+
             <div class="status-box">
                 🪙 포인트
-                <div class="number" id="points">120 P</div>
+                <div class="number" id="points">
+                    120 P
+                </div>
             </div>
 
             <div class="status-box">
                 ⭐ 레벨
-                <div class="number" id="level">Lv.1</div>
+                <div class="number" id="level">
+                    Lv.1
+                </div>
             </div>
+
         </div>
+
     </section>
 
     <section class="menu">
@@ -294,7 +365,12 @@ if (!points) {
     points = 120;
 }
 
-let quizCompleted = localStorage.getItem("todayQuizCompleted");
+let quizCompleted =
+    localStorage.getItem("todayQuizCompleted");
+
+let termCompleted =
+    localStorage.getItem("baseRateTermCompleted");
+
 
 function getLevel(points) {
 
@@ -313,6 +389,7 @@ function getLevel(points) {
     return 1;
 }
 
+
 function updateStatus() {
 
     document.getElementById("points").textContent =
@@ -322,10 +399,14 @@ function updateStatus() {
         "Lv." + getLevel(points);
 }
 
+
 function showAnswer() {
 
-    const answer = document.getElementById("answer");
-    const button = document.getElementById("quizButton");
+    const answer =
+        document.getElementById("answer");
+
+    const button =
+        document.getElementById("quizButton");
 
     answer.innerHTML =
         "✅ 정답: 대출 부담이 커질 가능성이 높습니다!<br><br>" +
@@ -346,9 +427,15 @@ function showAnswer() {
 
     points += 10;
 
-    localStorage.setItem("economyPoints", points);
+    localStorage.setItem(
+        "economyPoints",
+        points
+    );
 
-    localStorage.setItem("todayQuizCompleted", "yes");
+    localStorage.setItem(
+        "todayQuizCompleted",
+        "yes"
+    );
 
     quizCompleted = "yes";
 
@@ -361,7 +448,91 @@ function showAnswer() {
     button.textContent = "보상 받기 완료";
 }
 
+
+function completeTerm() {
+
+    const button =
+        document.getElementById("termButton");
+
+    const message =
+        document.getElementById("termMessage");
+
+    if (termCompleted === "yes") {
+
+        message.innerHTML =
+            "⭐ 이 경제용어의 학습 보상은 이미 받았습니다.";
+
+        button.disabled = true;
+        button.textContent = "학습 완료";
+
+        return;
+    }
+
+    points += 10;
+
+    localStorage.setItem(
+        "economyPoints",
+        points
+    );
+
+    localStorage.setItem(
+        "baseRateTermCompleted",
+        "yes"
+    );
+
+    termCompleted = "yes";
+
+    updateStatus();
+
+    message.innerHTML =
+        "🎉 학습 완료! +10P를 받았습니다.";
+
+    button.disabled = true;
+    button.textContent = "학습 완료";
+}
+
+
+function restoreTermStatus() {
+
+    if (termCompleted === "yes") {
+
+        const button =
+            document.getElementById("termButton");
+
+        const message =
+            document.getElementById("termMessage");
+
+        button.disabled = true;
+
+        button.textContent =
+            "학습 완료";
+
+        message.innerHTML =
+            "⭐ 이 경제용어의 학습 보상은 이미 받았습니다.";
+    }
+}
+
+
+function restoreQuizStatus() {
+
+    if (quizCompleted === "yes") {
+
+        const button =
+            document.getElementById("quizButton");
+
+        button.disabled = true;
+
+        button.textContent =
+            "오늘의 보상 완료";
+    }
+}
+
+
 updateStatus();
+
+restoreTermStatus();
+
+restoreQuizStatus();
 
 </script>
 
