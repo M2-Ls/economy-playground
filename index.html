@@ -477,18 +477,18 @@ function completeTerm() {
 
     localStorage.setItem(
         "baseRateTermCompleted",
-        "yes"
-    );
+        "예"
+ );
 
-    termCompleted = "yes";
+ 완료됨 = "예";
 
-    updateStatus();
+ 업데이트 상태();
 
-    message.innerHTML =
-        "🎉 학습 완료! +10P를 받았습니다.";
+ 메시지.내부 HTML =
+ "🎉 학습 완료! +10P를 받았습니다.";
 
-    button.disabled = true;
-    button.textContent = "학습 완료";
+ button.disabled = true;
+ button.textContent = "학습 완료";
 }
 
 
@@ -499,13 +499,13 @@ function restoreTermStatus() {
         const button =
             document.getElementById("termButton");
 
-        const message =
-            document.getElementById("termMessage");
+ const 메시지 =
+ document.getElementById("termMessage");
 
-        button.disabled = true;
+ button.disabled = true;
 
-        button.textContent =
-            "학습 완료";
+ button.textContent =
+ "학습 완료";
 
  메시지.내부 HTML =
  "⭐ 이 경제용어의 학습 보상은 이미 받았습니다.";
