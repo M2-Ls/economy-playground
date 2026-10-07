@@ -1,39 +1,39 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<머리>
+<meta charset=>UTF-8">
+<meta 이름="viewport" 콘텐츠="width=장치 너비, 초기 스케일=1.0">
 
 <title>경제 놀이터</title>
 
-<style>
+<스타일.>
 * {
-    box-sizing: border-box;
+ 박스 sizing: 테두리 박스;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #172033;
+몸 {
+ 여백: 0;
+ 폰트 패밀리: 아리알, 산세리프;
+ background: #f4f7fb;
+ 색상: #172033;
 }
 
 .header {
-    background: linear-gradient(135deg, #315bea, #7048e8);
-    color: white;
-    padding: 28px 22px;
-    border-radius: 0 0 28px 28px;
+ 배경: 선형 gradient(135 deg, #315bea, #7048e8);
+ 색상: 흰색;
+ 패딩: 28 px 22 px;
+ 국경 radius: 0 0 28 px 28 px;
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: bold;
+ 글꼴 크기: 26 px;
+ 글꼴 무게: 굵게;
 }
 
 .subtitle {
-    margin-top: 8px;
-    opacity: 0.9;
-    font-size: 14px;
+ 마진 탑: 8 px;
+ 불투명도: 0.9;
+ 글꼴 크기: 14 px;
 }
 
 .container {
@@ -507,34 +507,34 @@ function restoreTermStatus() {
         button.textContent =
             "학습 완료";
 
-        message.innerHTML =
-            "⭐ 이 경제용어의 학습 보상은 이미 받았습니다.";
-    }
+ 메시지.내부 HTML =
+ "⭐ 이 경제용어의 학습 보상은 이미 받았습니다.";
+ }
 }
 
 
-function restoreQuizStatus() {
+기능. restoreQuizStatus() {
 
-    if (quizCompleted === "yes") {
+ 만약 (퀴즈완료 === "예") {
 
-        const button =
-            document.getElementById("quizButton");
+ 설정 버튼 =
+ document.getElementById("퀴즈 버튼");
 
-        button.disabled = true;
+ button.disabled = true;
 
-        button.textContent =
-            "오늘의 보상 완료";
-    }
+ button.textContent =
+ "오늘의 보상 완료";
+ }
 }
 
 
-updateStatus();
+업데이트 상태();
 
 restoreTermStatus();
 
 restoreQuizStatus();
 
-</script>
+</대본>
 
-</body>
+</몸>
 </html>
